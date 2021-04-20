@@ -66,7 +66,7 @@ NOTE: This will be a callback function for the tasks below
 */
 
 function inning(){
-    return Math.floor(Math.random()*10) % 3
+    return Math.floor(Math.random()*(3))
 }
 
 
