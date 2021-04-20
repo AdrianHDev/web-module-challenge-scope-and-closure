@@ -28,11 +28,14 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
-  
+  the count variable isn't hoisted in counter1, and as such can't be accessed outside of the function.
   2. Which of the two uses a closure? How can you tell?
-  
+  counterMaker uses a closure, you can tell because a function is defined inside of the counter.
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+     counter1 would be better if you want to keep the count private, such as for interfaces, and is easier to debug,
+     but counter2 would be better if you need quick access to the variable, but is harder to debug because you can
+     access it from more places in your codebase.
 */
 
 // counter1 code
@@ -62,8 +65,8 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+    return Math.floor(Math.random()*10) % 3
 }
 
 
@@ -81,8 +84,16 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(callback, innings){
+    let gameScore = {
+      "Home": 0,
+      "Away": 0,
+    }
+    for ( let x = 1; x <= innings; x++) {
+      gameScore.Home += callback();
+      gameScore.Away += callback();
+    }
+    return gameScore;
 }
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
@@ -90,8 +101,8 @@ Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(callback) {
+  
 }
 
 
